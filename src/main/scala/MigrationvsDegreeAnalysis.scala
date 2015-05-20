@@ -1,4 +1,4 @@
-nimport org.apache.spark.SparkContext._
+import org.apache.spark.SparkContext._
 import java.security.MessageDigest
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
@@ -93,7 +93,7 @@ var cd_l2= sc.textFile(inputPath+callDegreeFileL2,10).filter(d=>d.contains("Degr
 cd_l2.count()
 
 		
-var KigaliDegreTest=cd_l1.map{case(k,v)=>(k,(v,if(v._5=="Kigali") v._7 else 0))}
+//var KigaliDegreTest=cd_l1.map{case(k,v)=>(k,(v,if(v._5=="Kigali") v._7 else 0))}
 
 var KigaliDegree=cd_l1.map{case(k,v)=>(k,(if(v._5=="Kigali") v._7.toInt else 0))}.reduceByKey(_+_)
 KigaliDegree.count()
@@ -167,7 +167,7 @@ var finalTable_m=finalTable.map{case(k,v)=>(k,(v._1._1,v._1._2,v._1._3,v._1._4,v
 //v1=Move to Kigali,  v2=moveFromKigali,v3=Remain Out of Kigali, v4=Remain In Kigali, v5=Kigali Degree, v6=NonKigali Degree v7=HomeDist Degree v8=Home Prov Degree v9=Total Degree
 //v1=Move to Kigali => if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali")  Current v._2 and next prov v._4 are Kigali not the last one v._6
 
-var finalTable2=finalTable_m.map{case(k,v)=>(k,(if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali") 1 else 0,if(v._2 != v._6 && v._6==v._8 && v._6=="Kigali") 1 else 0,if(v._2 != "Kigali" && v._4!="Kigali" && v._6 !="Kigali" && v._8 !="Kigali") 1 else 0,if(v._2 == "Kigali" && v._4=="Kigali" && v._6 =="Kigali" && v._8 =="Kigali") 1 else 0 , v._9,v._10,v._11,v._12,v._13))}.distinct()
+var finalTable2=finalTable_m.map{case(k,v)=>(k,(if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali") 1 else 0,if((v._2 != v._6 || v._4!=v._6) && v._6==v._8 && v._6=="Kigali") 1 else 0,if(v._2 != "Kigali" && v._4!="Kigali" && v._6 !="Kigali" && v._8 !="Kigali") 1 else 0,if(v._2 == "Kigali" && v._4=="Kigali" && v._6 =="Kigali" && v._8 =="Kigali") 1 else 0 , v._9,v._10,v._11,v._12,v._13))}.distinct()
 
 //finalTable2.take(10).foreach(println)
 

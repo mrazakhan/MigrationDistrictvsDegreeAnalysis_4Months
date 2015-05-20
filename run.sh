@@ -9,7 +9,7 @@ exec_obj_name='MigrationDegreeAnalyzer_4months'
 
 #month_array=(0501 0502 0503 0504 0505 0506 0507 0508 0509 0510 0511 0512 0601 0602 0603 0604 0605 0606 0607 0608 0609 0610) 
 month_array=( 0801  0802 0803 0804 )
-
+'''
 for ((index=2; index < ${#month_array[@]}-1; index++))
 do
 
@@ -25,7 +25,7 @@ do
         --num-executors 3 \
         $jar $monthn1 $monthn1$Call_file_suffix $monthn2$Call_file_suffix $monthl1$Call_file_suffix $monthl2$Call_file_suffix  --verbose ;
 done
-
+'''
 month_array=(0602 0603 0604 0605  ) 
 
 for ((index=2; index < ${#month_array[@]}-1; index++))
