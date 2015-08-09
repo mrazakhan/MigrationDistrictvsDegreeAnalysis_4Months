@@ -238,8 +238,8 @@ var moveFromKigaliDetails_a2= moveFromKigaliDetails_a.map{case(k,v)=>(k,(month1,
 
 var moveFromKigaliDetails_b2= moveFromKigaliDetails_b.map{case(k,v)=>(k,(month1,"Kirehe","Muhanga","Musanze","Ngoma","Ngororero","Nyabihu","Nyagatare","Nyamagabe","Nyamasheke","Nyanza","Nyaruguru","Rubavu","Ruhango","Rulindo","Rusizi","Rutsiro","Rwamagana"))}
 
-moveFromKigaliDetails_a2.saveAsTextFile(outputPath+"MoveFromKigaliDetails"+month1)
-moveFromKigaliDetails_b2.saveAsTextFile(outputPath+"MoveFromKigaliDetails"+month1)
+moveFromKigaliDetails_a2.saveAsTextFile(outputPath+"MoveFromKigaliDetails_a"+month1)
+moveFromKigaliDetails_b2.saveAsTextFile(outputPath+"MoveFromKigaliDetails_b"+month1)
 
 
 var DistVolumes=migration.join(VolumesTable).distinct()
