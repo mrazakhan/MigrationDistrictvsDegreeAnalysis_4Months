@@ -186,6 +186,60 @@ var DistDegrees=finalTable2.map{case(k,v)=>(k,(month1,v._1,v._2,v._3,v._4,v._5,v
 //DistDegrees.take(10).foreach(println)
 
 DistDegrees.saveAsTextFile(outputPath+"MigrationDistrictDegree_Modal"+month1)
+//Districts:Bugesera,Burera,Gakenke,Kigali,Gatsibo,Gicumbi,Gisagara,Huye,Kamonyi,Karongi,Kayonza,Kigali,Kirehe,Muhanga,Musanze,Ngoma,Ngororero,Nyabihu,Nyagatare,Nyamagabe,Nyamasheke,Nyanza,Kigali,Nyaruguru,Rubavu,Ruhango,Rulindo,Rusizi,Rutsiro,Rwamagana
+
+var moveToKigaliDetails_a =finalTable_m.map{case(k,v)=>(k,(if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Bugesera") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Burera") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Gakenke") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Gatsibo") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Gicumbi") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Gisagara") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Huye") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Kamonyi") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Karongi") 1 else 0))}
+
+var moveToKigaliDetails_b =finalTable_m.map{case(k,v)=>(k,(if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Kirehe") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Muhanga") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Musanze") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Ngoma") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Ngororero") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Nyabihu") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Nyagatare") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Nyamagabe") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Nyamasheke") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Nyanza") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Nyaruguru") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Rubavu") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Ruhango") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Rulindo") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Rusizi") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Rutsiro") 1 else 0,if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8&& v._6=="Rwamagana") 1 else 0))}
+var moveToKigaliDetails_a2= moveToKigaliDetails_a.map{case(k,v)=>(k,(month1,"Bugesera","Burera","Gakenke","Gatsibo","Gicumbi","Gisagara","Huye","Kamonyi"))}
+var moveToKigaliDetails_b2= moveToKigaliDetails_b.map{case(k,v)=>(k,(month1,
+"Karongi","Kirehe","Muhanga","Musanze","Ngoma","Ngororero","Nyabihu","Nyagatare","Nyamagabe","Nyamasheke","Nyanza","Nyaruguru","Rubavu","Ruhango","Rulindo","Rusizi","Rutsiro","Rwamagana"))}
+
+
+moveToKigaliDetails_a2.saveAsTextFile(outputPath+"MoveToKigaliDetails_a"+month1)
+moveToKigaliDetails_b2.saveAsTextFile(outputPath+"MoveToKigaliDetails_b"+month1)
+
+var moveFromKigaliDetails_a =finalTable_m.map{case(k,v)=>(k,(
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Bugesera") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Burera") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Gakenke") 1 else 0,//MoveFromKigal
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Gatsibo") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Gicumbi") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Gisagara") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Huye") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Kamonyi") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Karongi") 1 else 0//MoveFromKigali
+))}
+
+var moveFromKigaliDetails_b =finalTable_m.map{case(k,v)=>(k,(
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Kirehe") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Muhanga") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Musanze") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Ngoma") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Ngororero") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Nyabihu") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Nyagatare") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Nyamagabe") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Nyamasheke") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Nyanza") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Nyaruguru") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Rubavu") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Ruhango") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Rulindo") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Rusizi") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Rutsiro") 1 else 0,//MoveFromKigali
+if(v._6 == v._8 && v._8=="Kigali" && v._2==v._4&& v._2=="Rwamagana") 1 else 0//MoveFromKigali
+))}
+
+
+
+
+var moveFromKigaliDetails_a2= moveFromKigaliDetails_a.map{case(k,v)=>(k,(month1,"Bugesera","Burera","Gakenke","Gatsibo","Gicumbi","Gisagara","Huye","Kamonyi","Karongi"))}
+
+var moveFromKigaliDetails_b2= moveFromKigaliDetails_b.map{case(k,v)=>(k,(month1,"Kirehe","Muhanga","Musanze","Ngoma","Ngororero","Nyabihu","Nyagatare","Nyamagabe","Nyamasheke","Nyanza","Nyaruguru","Rubavu","Ruhango","Rulindo","Rusizi","Rutsiro","Rwamagana"))}
+
+moveFromKigaliDetails_a2.saveAsTextFile(outputPath+"MoveFromKigaliDetails"+month1)
+moveFromKigaliDetails_b2.saveAsTextFile(outputPath+"MoveFromKigaliDetails"+month1)
 
 
 var DistVolumes=migration.join(VolumesTable).distinct()
