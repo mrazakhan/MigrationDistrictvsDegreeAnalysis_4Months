@@ -167,14 +167,21 @@ var finalTable_m=finalTable.map{case(k,v)=>(k,(v._1._1,v._1._2,v._1._3,v._1._4,v
 //v1=Move to Kigali,  v2=moveFromKigali,v3=Remain Out of Kigali, v4=Remain In Kigali, v5=Kigali Degree, v6=NonKigali Degree v7=HomeDist Degree v8=Home Prov Degree v9=Total Degree
 //v1=Move to Kigali => if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali")  Current v._2 and next prov v._4 are Kigali not the last one v._6
 
-var finalTable2=finalTable_m.map{case(k,v)=>(k,(if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8) 1 else 0,if((v._2 != v._6 && v._2!=v._4) && v._6==v._8 && v._6=="Kigali") 1 else 0,if((v._2==v._4==v._6==v._8)&&(v._2 != "Kigali" && v._4!="Kigali" && v._6 !="Kigali" && v._8 !="Kigali")) 1 else 0,if(v._2 == "Kigali" && v._4=="Kigali" && v._6 =="Kigali" && v._8 =="Kigali") 1 else 0 , v._9,v._10,v._11,v._12,v._13))}.distinct()
+var finalTable2=finalTable_m.map{case(k,v)=>(k,(
+if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali" && v._6==v._8) 1 else 0,//MoveToKigali
+if((v._2 != v._6 && v._2==v._4) && v._6==v._8 && v._6=="Kigali") 1 else 0,//MoveFromKigali
+if((v._2==v._4&&v._4==v._6&&v._6==v._8)&&(v._2 != "Kigali")) 1 else 0,//RemainOutOfKigali
+if(v._2 == "Kigali" && v._4=="Kigali" && v._6 =="Kigali" && v._8 =="Kigali") 1 else 0 ,//RemainInKigali
+if ((v._2!=v._4 && v._6!=v._8 && v._4!=v._6) && (v._2!="Kigali" &&v._4!="Kigali" &&v._6!="Kigali" && v._8!="Kigali")) 1 else 0,//ExtremeMoveOutOfKigali
+if ((v._2!=v._4 && v._6!=v._8 && v._4==v._6) && (v._2!="Kigali" &&v._4!="Kigali" &&v._6!="Kigali" && v._8!="Kigali")) 1 else 0,//SoftMoveOutOfKigali
+v._9,v._10,v._11,v._12,v._13))}.distinct()
 
-//var finalTable2=finalTable_m.map{case(k,v)=>(k,(if(v._2 == v._4 && v._4=="Kigali" && v._6!="Kigali") 1 else 0,if((v._2 != v._6 ) && v._6==v._8 && v._6=="Kigali") 1 else 0,if(v._2 != "Kigali" && v._4!="Kigali" && v._6 !="Kigali" && v._8 !="Kigali") 1 else 0,if(v._2 == "Kigali" && v._4=="Kigali" && v._6 =="Kigali" && v._8 =="Kigali") 1 else 0 , v._9,v._10,v._11,v._12,v._13))}.distinct()
 
 //finalTable2.take(10).foreach(println)
-
+//ExtremeMoveOutsideKigali=Every month different and none equal to Kigali
+//SoftMoveOutsideKigali =Previous 2 month different, Next 2 month different, last 1 month and next 1 month are  the same and every thing outside Kigali
 		
-var DistDegrees=finalTable2.map{case(k,v)=>(k,(month1,v._1,v._2,v._3,v._4,v._5,v._6,v._7,v._8,v._9))}.distinct().coalesce(1).mapPartitions(it=>(Seq("(Subscriber,(Month,MoveToKigali,MoveFromKigali,RemainOutOfKigali,RemainInKigali,KigaliDegree,NonKigaliDegree,HomeDistDegree,HomeProvDegree,TotalDegree))")++it).iterator)
+var DistDegrees=finalTable2.map{case(k,v)=>(k,(month1,v._1,v._2,v._3,v._4,v._5,v._6,v._7,v._8,v._9))}.distinct().coalesce(1).mapPartitions(it=>(Seq("(Subscriber,(Month,MoveToKigali,MoveFromKigali,RemainOutOfKigali,RemainInKigali,ExtremeMoveOutsideKigali,SoftMoveOutsideKigali,KigaliDegree,NonKigaliDegree,HomeDistDegree,HomeProvDegree,TotalDegree))")++it).iterator)
 
 //DistDegrees.take(10).foreach(println)
 
